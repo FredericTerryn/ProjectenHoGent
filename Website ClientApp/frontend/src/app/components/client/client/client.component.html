@@ -1,0 +1,19 @@
+<div class="margin">
+    
+    <div *ngIf='client.username==loggedInUser'> 
+        <div class="cross">
+        <button type="button" class="close" aria-label="Close" (click)="deleteClient(client)" data-test="deletebtn">
+            <span aria-hidden="true">&times;</span>
+            
+        </button>
+    </div>
+</div>
+    Name: {{client.name}}
+    <br> Email: {{client.email}}
+    <br> Address: {{client.streetname}} &nbsp;{{client.streetnumber}}
+    <br> Phone: {{client.phone}}
+    <br> Gender: {{client.gender}}
+    <br> Birth: {{client.birth}}
+    <br> created by: {{client.username}}
+    <br>
+</div>

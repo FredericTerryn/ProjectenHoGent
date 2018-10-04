@@ -1,0 +1,84 @@
+<form [formGroup]='client' (ngSubmit)='onSubmit()'>
+  <div class="form-group">
+    <h3 class="ui header">Add client</h3>
+
+    <label for="name_id">Name: </label>
+    <input class="form-control" formControlName='name' id="name" name="name_id" data-test="name">
+    <div *ngIf='client.get("name").errors && client.get("name").touched' class='alert alert-warning'>
+      Client name not valid. Minimum length is 2.
+    </div>
+    <br>
+
+    <label for="email">Email: </label>
+    <input class="form-control" formControlName='email' id="email" name="email" data-test="email">
+    <div *ngIf='client.get("email").errors?.emailAlreadyExists && client.get("email").touched' class='alert alert-warning'>
+      Email not unique.
+    </div>
+    <div *ngIf='client.get("email").errors && client.get("email").touched && !client.get("email").errors?.emailAlreadyExists' class='alert alert-warning'>
+      Email not valid.
+    
+    </div>
+    <br>
+
+    <label>Address </label>
+    <br>
+    <div class="flex">
+      <div>
+        <div class="marginright">
+          <label for="streetname">Street name: </label>
+          <input class="form-control" formControlName='streetname' id="streetname" name="streetname" data-test="streetname">
+          <div *ngIf='client.get("streetname").errors && client.get("streetname").touched' class='alert alert-warning'>
+            Street name not valid. Minimum length is 2.
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="marginleft">
+          <label for="streetnumber">Street number: </label>
+          <input class="form-control" formControlName='streetnumber' id="streetnumber" name="streetnumber" data-test="streetnumber">
+          <div *ngIf='client.get("streetnumber").errors && client.get("streetnumber").touched' class='alert alert-warning'>
+            Street number not valid.
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <label for="phone">Phone number: </label>
+    <br>
+    <input class="form-control" formControlName='phone' id="phone" name="phone" data-test="phone">
+    <div *ngIf='client.get("phone").errors && client.get("phone").touched' class='alert alert-warning'>
+      Phone number can only contain numbers or starting with +.
+    </div>
+    <br>
+    <label for="gender">Gender: </label>
+       <select class="form-control" id="gender" formControlName='gender' data-test="gender">
+      <option *ngFor='let type of unitTypes' [value]='type'>
+        {{type}}
+      </option>
+    </select>
+    <div *ngIf='client.get("gender").errors && client.get("gender").touched' class='alert alert-warning'>
+      Gender not valid.
+    </div>
+    <br>
+    <label for="birth">Date of birth: </label>
+    <input class="form-control" type="date" formControlName='birth' id="birth" name="birth" data-test="birth">
+    <div *ngIf='client.get("birth").errors && client.get("birth").touched' class='alert alert-warning'>
+      Date of birth not valid. Year has to be between 1900 and 2099.
+    </div>
+    <button type="submit" class="btn btn-primary" data-test="submitbtn" [disabled]="!client.valid">Submit</button>
+    <br>
+    <br>
+    <br>
+  </div>
+
+</form>
+<!-- <br>{{client.value | json}}
+<br> {{client.valid}}
+<br>
+<br>
+<br> name: {{client.get("name").valid | json}}
+<br> street: {{client.get("streetname").valid | json}}
+<br> number: {{client.get("streetnumber").valid | json}}
+<br> phone: {{client.get("phone").valid | json}}
+<br> gender: {{client.get("gender").valid | json}}
+<br> birth: {{client.get("birth").valid | json}} -->

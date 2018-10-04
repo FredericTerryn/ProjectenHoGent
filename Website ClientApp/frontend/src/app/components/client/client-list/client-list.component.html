@@ -1,0 +1,20 @@
+<div class="head">
+  <div class="margin">
+  <p class="h2">Client List</p>
+<p>Clients created by you with their information.<br>
+</p>
+<a class='item' routerLinkActive='active' routerLink="/addclient"> <button class="btn btn-primary">add client</button></a>
+<a class='item' routerLinkActive='active' routerLink="/allclients"> <button class="btn btn-primary">all clients</button></a>
+<hr>
+
+<div class="showclients">
+<input class="form-control" type="text" placeholder="Search client" (keyup)="filterClient$.next($event.target.value)"><br>
+<div class="d-flex flex-column">
+<app-client *ngFor="let client of clientsCreatedbyCurrentUser|clientFilter:filterClientName" [client]="client"><div class="p-2" data-test="clientlist"></div></app-client>
+</div>
+</div>
+</div>
+</div>
+
+<br><br><br>
+
