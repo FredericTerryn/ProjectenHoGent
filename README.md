@@ -1,8 +1,3 @@
 # ProjectenHoGent
-<br />
-Site ClientApp staat ook online. (moet even laden)
-<br />
-https://clientapp-frondendv2.herokuapp.com/  
-<br /> 
-De java applicatie en .net site zijn één project die data van elkaar gebruiken
-(zonder backend).
+This is a group effort done by 4 students. The app is separated in a .NET and Java part. 
+(Clientapp is not mine, all the rest is). 
